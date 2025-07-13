@@ -1,1 +1,1 @@
-from repositories.user_repository_factory import user_repository_factory
+from app.factories.repositories.user_repository_factory import user_repository_factory

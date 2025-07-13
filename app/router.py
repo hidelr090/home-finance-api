@@ -1,7 +1,9 @@
 from fastapi import APIRouter
-from app.controllers.user_controller import user_controller
+from app.factories.controllers.user_controller_factory import user_controller_factory
 
 api_router = APIRouter()
+
+user_controller = user_controller_factory()
 
 api_router.include_router(user_controller.router, prefix="/user", tags=["User"])
 

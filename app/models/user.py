@@ -1,8 +1,12 @@
 from typing import List
 from sqlalchemy import Boolean, Column, String, DateTime
 from sqlalchemy.orm import Mapped, relationship
-from ..models import BaseModelWithTimestamps, CategoryModel, EntryUserPercentageModel, TableModel, EntryModel
 
+from app.models.base import BaseModelWithTimestamps
+from app.models.category import CategoryModel
+from app.models.entry import EntryModel
+from app.models.entry_user_percentage import EntryUserPercentageModel
+from app.models.table import TableModel
 class UserModel(BaseModelWithTimestamps):
     __tablename__ = "user"
 

@@ -9,7 +9,7 @@ class UserController:
     ):
         self.router = APIRouter()
         
-        self.router.get("/")(self.list_users, dependencies = [])
+        self.router.get("/")(self.list_users)
         self.router.post("/")(self.create_user)
         
         self.create_user_usecase = create_user_usecase

@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Float, ForeignKey
 from sqlalchemy.orm import mapped_column, relationship
-from ..models import BaseModelWithTimestamps
+
+from app.models.base import BaseModelWithTimestamps
 
 class EntryUserPercentageModel(BaseModelWithTimestamps):
   __tablename__ = "entry_user_percentage"

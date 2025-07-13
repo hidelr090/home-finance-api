@@ -1,1 +1,1 @@
-import middlewares
+import app.shared.middlewares

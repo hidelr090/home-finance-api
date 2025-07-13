@@ -1,8 +1,10 @@
 from typing import List
 from sqlalchemy import Integer, Column, String, Float, DateTime, ForeignKey
 from sqlalchemy.orm import mapped_column, relationship, Mapped
-from ..models import BaseModelWithTimestamps, EntryUserPercentageModel
 from datetime import datetime as dt
+
+from app.models.base import BaseModelWithTimestamps
+from app.models.entry_user_percentage import EntryUserPercentageModel
 
 class EntryModel(BaseModelWithTimestamps):
   __tablename__ = "entry"

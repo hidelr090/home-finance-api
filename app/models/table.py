@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import mapped_column, relationship
-from ..models import BaseModelWithTimestamps
+
+from app.models.base import BaseModelWithTimestamps
 
 class TableModel(BaseModelWithTimestamps):
   __tablename__ = "table"

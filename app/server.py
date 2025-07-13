@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from app.router import api_router
+from app.config import setup_env
 
-from shared.middlewares import RateLimiterMiddleware
+from app.shared.middlewares import RateLimiterMiddleware
+
+setup_env()
 
 app = FastAPI()
 app.include_router(api_router)

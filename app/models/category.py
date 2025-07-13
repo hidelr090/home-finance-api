@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Float, ForeignKey
-from ..models import BaseModelWithTimestamps
+from app.models.base import BaseModelWithTimestamps
 from sqlalchemy.orm import mapped_column, relationship
 
 class CategoryModel(BaseModelWithTimestamps):
