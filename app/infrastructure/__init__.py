@@ -1,1 +1,1 @@
-from .database import get_db
+from .database.connection import get_db

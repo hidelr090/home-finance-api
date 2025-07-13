@@ -2,7 +2,7 @@ import uuid
 from datetime import datetime
 from sqlalchemy import Column, DateTime, String
 from sqlalchemy.orm import declared_attr
-from ..infrastructure.database import Base 
+from ..infrastructure.database.connection import Base 
 
 class BaseModelWithTimestamps(Base):
     __abstract__ = True
