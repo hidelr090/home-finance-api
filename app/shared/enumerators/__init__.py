@@ -1,0 +1,1 @@
+from app.shared.enumerators.entry_type import EntryType
