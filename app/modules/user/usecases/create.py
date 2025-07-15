@@ -1,6 +1,7 @@
 from app.schemas.user import UserCreateDTO
 from app.repositories.user_repository import UserRepository
 from app.models.user import UserModel
+from app.shared.utils.cryptography import encrypt
 
 class CreateUserUseCase (): 
     def __init__(self, repo: UserRepository):
@@ -10,5 +11,18 @@ class CreateUserUseCase ():
         existing = self.repo.get_by_email(data.email)
         if existing:
             raise ValueError("E-mail já cadastrado.")
-        user = UserModel(**data.model_dump())
+        
+        if data.password_confirm != data.password:
+            raise ValueError("Senhas nao conferem")
+
+        user = UserModel(
+            name=data.name,
+            surname=data.surname,
+            email=data.email,
+            password_hash=encrypt(data.password),
+            is_active=data.is_active,
+            token=data.token,
+            token_expiration=data.token_expiration
+        )
+
         return self.repo.create(user)

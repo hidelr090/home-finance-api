@@ -1,3 +1,4 @@
+from typing import Optional
 from sqlalchemy.orm import Session
 from app.models.user import UserModel
 
@@ -11,8 +12,9 @@ class UserRepository:
         self.db.refresh(user)
         return user
 
-    # def get_by_email(self, email: str) -> UserModel | None:
-    #     return self.db.query(UserModel).filter(UserModel.email == email).first()
+    def get_by_email(self, email: str) -> Optional[UserModel]:
+        return self.db.query(UserModel).filter(UserModel.email == email).first()
 
     def list_all(self):
-        return { "nome": "test" }
+        return self.db.query(UserModel).all()
+

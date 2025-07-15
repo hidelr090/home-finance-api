@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import EmailStr, BaseModel
 from datetime import datetime
 from typing import Optional
 from uuid import uuid4
@@ -7,8 +7,9 @@ class UserCreateDTO(BaseModel):
     name: str
     surname: str
     email: EmailStr
-    password_hash: str
-    is_active: bool
+    password: str
+    password_confirm: str
+    is_active: bool = False
     token: Optional[str] = None
     token_expiration: Optional[datetime] = None
     

@@ -9,17 +9,17 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-url = os.getenv("DATABASE_URL")
+url = os.getenv("DATABASE_CONNECTION_URL")
 
 if not url:
     raise RuntimeError("DATABASE_URL not set")
 
 config = context.config
-config.set_main_option("sqlalchemy.url", url)
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+config.set_main_option("sqlalchemy.url", url)
 from app.infrastructure.database.connection import Base
 
 target_metadata = Base.metadata  # <-- Use apenas esta linha!
