@@ -16,3 +16,7 @@ async def list_users(
 @router.post("/")
 async def create_user(data: dict = Body(...), controller: UserController = Depends(user_controller_factory)):
     return await controller.create_user(data)
+
+@router.post("/auth")
+async def auth_user(data: dict = Body(...), controller: UserController = Depends(user_controller_factory)):
+    return await controller.authenticate(data)

@@ -2,6 +2,7 @@ from app.schemas.user import UserCreateDTO
 from app.repositories.user_repository import UserRepository
 from app.models.user import UserModel
 from app.shared.utils.cryptography import encrypt
+from app.shared.utils.exceptions import BusinessError
 
 class CreateUserUseCase (): 
     def __init__(self, repo: UserRepository):
@@ -10,10 +11,10 @@ class CreateUserUseCase ():
     def execute(self, data: UserCreateDTO) -> UserModel:
         existing = self.repo.get_by_email(data.email)
         if existing:
-            raise ValueError("E-mail já cadastrado.")
+            raise BusinessError("E-mail já cadastrado.")
         
         if data.password_confirm != data.password:
-            raise ValueError("Senhas nao conferem")
+            raise BusinessError("Senhas nao conferem")
 
         user = UserModel(
             name=data.name,
