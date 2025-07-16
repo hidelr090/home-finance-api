@@ -1,1 +1,4 @@
-from .usecases import CreateUserUseCase
+from .usecases import (
+  CreateUserUseCase,
+  AuthUserUseCase
+)
