@@ -18,14 +18,14 @@ class AuthUserDTO(BaseModel):
     password: str
     
 class UserUpdateDTO(BaseModel):
-    name: Optional[str]
-    surname: Optional[str]
-    email: Optional[EmailStr]
-    password: Optional[str]
-    password_confirm: Optional[str]
-    is_active: Optional[bool]
-    token: Optional[str]
-    token_expiration: Optional[datetime]
+    name: Optional[str] = None
+    surname: Optional[str] = None
+    email: Optional[EmailStr] = None
+    password: Optional[str] = None
+    password_confirm: Optional[str] = None
+    is_active: Optional[bool] = None
+    token: Optional[str] = None
+    token_expiration: Optional[datetime] = None
 
 class UserDTO(UserCreateDTO):
     id: uuid4

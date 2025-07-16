@@ -1,2 +1,3 @@
 from app.factories.usecases.user.create_user_usecase_factory import create_user_usecase_factory
+from app.factories.usecases.user.update_user_usecase_factory import update_user_usecase_factory
 from app.factories.usecases.user.auth_user_usecase_factory import auth_user_usecase_factory

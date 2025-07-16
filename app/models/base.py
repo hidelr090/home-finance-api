@@ -34,3 +34,6 @@ class BaseModelWithTimestamps(Base):
     @declared_attr
     def deleted_by(cls):
         return Column(String, nullable=True)
+    
+    def to_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

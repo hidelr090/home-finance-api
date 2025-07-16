@@ -1,4 +1,5 @@
 from .usecases import (
   CreateUserUseCase,
-  AuthUserUseCase
+  AuthUserUseCase,
+  UpdateUserUseCase,
 )
