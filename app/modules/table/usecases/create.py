@@ -12,7 +12,9 @@ class CreateTableUseCase():
     print(session, 'sess')
     table = TableModel(
       name = data.name,
-      user_id = session["user"].id
+      user_id = session["user"].id,
+      created_by = session["user"].id,
+      updated_by = session["user"].id
     )
     
     return self.repo.create(table)

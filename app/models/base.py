@@ -25,11 +25,11 @@ class BaseModelWithTimestamps(Base):
     
     @declared_attr
     def created_by(cls):
-        return Column(String, default=datetime.utcnow, nullable=False)
+        return Column(String, nullable=False)
 
     @declared_attr
     def updated_by(cls):
-        return Column(String, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+        return Column(String, nullable=False)
 
     @declared_attr
     def deleted_by(cls):
