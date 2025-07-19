@@ -3,7 +3,9 @@ from fastapi import Request, HTTPException, status, Depends
 from datetime import datetime, timezone
 from app.repositories.user_repository import UserRepository
 from app.factories.repositories.user_repository_factory import user_repository_factory
+from app.shared.types.session import AuthSession
 from app.shared.utils.cryptography import decode as decoder
+from box import Box
 
 async def auth_middleware(
     request: Request,
@@ -23,5 +25,15 @@ async def auth_middleware(
 
     if not user.token_expiration or user.token_expiration.replace(tzinfo=timezone.utc) < datetime.now(timezone.utc):
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, detail="Token expired")
-
+    
+    session: AuthSession = Box({
+        "user": {
+            "id": user.id,
+            "email": user.email
+        },
+        "token": token,
+        "is_authenticated" : True
+    })
+    request.session.update(session)
+    
     return user

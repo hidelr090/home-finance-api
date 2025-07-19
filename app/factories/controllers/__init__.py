@@ -1,1 +1,2 @@
 from app.factories.controllers.user_controller_factory import user_controller_factory
+from app.factories.controllers.table_controller_factory import table_controller_factory

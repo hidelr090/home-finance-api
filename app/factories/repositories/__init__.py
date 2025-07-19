@@ -1,1 +1,2 @@
 from app.factories.repositories.user_repository_factory import user_repository_factory
+from app.factories.repositories.table_repository_factory import table_repository_factory

@@ -1,0 +1,1 @@
+from app.factories.usecases.table import create_table_usecase_factory

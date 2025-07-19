@@ -13,6 +13,7 @@ h11==0.16.0
 idna==3.10
 importlib-metadata==8.5.0
 importlib-resources==6.4.5
+itsdangerous==2.2.0
 jwt==1.3.1
 mako==1.3.10
 MarkupSafe==2.1.5
@@ -21,6 +22,7 @@ pycparser==2.22
 pydantic==2.10.6
 pydantic-core==2.27.2
 PyJWT==2.9.0
+python-box==7.2.0
 python-dotenv==1.0.1
 sniffio==1.3.1
 sqlalchemy==2.0.41

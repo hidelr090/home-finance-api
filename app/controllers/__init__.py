@@ -1,1 +1,2 @@
 from app.controllers.user_controller import UserController
+from app.controllers.table_controller import TableController

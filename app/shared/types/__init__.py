@@ -1,0 +1,1 @@
+from app.shared.types.session import AuthSession
