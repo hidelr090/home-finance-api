@@ -9,7 +9,6 @@ class CreateTableUseCase():
     self.repo = repo
     
   def execute(self, session: AuthSession, data: TableCreateDTO) -> TableModel:
-    print(session, 'sess')
     table = TableModel(
       name = data.name,
       user_id = session["user"].id,
