@@ -17,3 +17,14 @@ async def create_table(
 ):
   session: AuthSession = request.session
   return await controller.create_table(session, data)
+
+@router.put("/{table_id}")
+async def update_table(
+  request: Request,
+  table_id: str,
+  data: dict = Body(...),
+  controller: TableController = Depends(table_controller_factory),
+  _: None = Depends(auth_middleware),
+):
+  session: AuthSession = request.session
+  return await controller.update_table(session, table_id, data)

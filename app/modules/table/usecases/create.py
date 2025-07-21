@@ -18,6 +18,8 @@ class CreateTableUseCase():
     self.__category_repository = category_repository
     
   def execute(self, session: AuthSession, data: TableCreateDTO) -> TableModel:
+    return self.__create_table(session, data)
+  def __create_table(self, session: AuthSession, data: TableCreateDTO) ->TableModel:
     user_ids = set(data.user_ids or [])
     user_ids.add(session["user"].id)
     
@@ -37,4 +39,3 @@ class CreateTableUseCase():
     table.categories.extend(unique_categories)
     
     return self.__repo.create(table)
-
