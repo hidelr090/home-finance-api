@@ -1,8 +1,10 @@
+from __future__ import annotations
+
 from typing import List
 from sqlalchemy import Boolean, Column, String, DateTime
 from sqlalchemy.orm import Mapped, relationship
 
-from app.models.associations.user_table import UserTableModel
+from app.models.associations.user_table import user_table
 from app.models.base import BaseModelWithTimestamps
 from app.models.category import CategoryModel
 from app.models.entry import EntryModel
@@ -21,8 +23,11 @@ class UserModel(BaseModelWithTimestamps):
 
     categories: Mapped[List["CategoryModel"]] = relationship(back_populates="user")
     entries: Mapped[List["EntryModel"]] = relationship(back_populates="user")
-    tables: Mapped[List["TableModel"]] = relationship(back_populates="user")
+    tables: Mapped[List["TableModel"]] = relationship(
+        "TableModel",
+        secondary=user_table,
+        back_populates="users"
+    )
     entry_user_percentages: Mapped[List["EntryUserPercentageModel"]] = relationship(back_populates="user")
-    tables = relationship("TableModel", secondary = UserTableModel)
     
     

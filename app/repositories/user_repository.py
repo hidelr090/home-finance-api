@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 from sqlalchemy.orm import Session
 from app.models.user import UserModel
 from app.shared.utils.exceptions import NotFoundError, RepositoryError
@@ -8,6 +8,8 @@ class UserRepository:
         self.db = db
 
     def create(self, user: UserModel) -> UserModel:
+        self.db.flush() 
+        self.db.expunge_all() 
         self.db.add(user)
         self.db.commit()
         self.db.refresh(user)
@@ -21,6 +23,10 @@ class UserRepository:
 
     def list_all(self):
         return self.db.query(UserModel).all()
+    
+    def list_by_ids(self, ids: List[str]) -> Optional[List[UserModel]]:
+        if not ids: return []
+        return self.db.query(UserModel).filter(UserModel.id.in_(ids)).all()
     
     def update(self, user_id: int, updates: dict) -> Optional[UserModel]:
         db_user = self.db.query(UserModel).filter(UserModel.id == user_id).first()

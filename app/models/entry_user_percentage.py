@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from sqlalchemy import Column, Float, ForeignKey
 from sqlalchemy.orm import mapped_column, relationship
 

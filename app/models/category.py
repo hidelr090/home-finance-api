@@ -1,6 +1,9 @@
+from __future__ import annotations
+
 from typing import List
 from sqlalchemy import Column, String, Float, ForeignKey
-from app.models.associations.table_category import TableCategoryModel
+from app.models.associations import table_category
+from app.models.associations.table_category import table_category
 from app.models.base import BaseModelWithTimestamps
 from sqlalchemy.orm import mapped_column, relationship, Mapped
 
@@ -16,4 +19,4 @@ class CategoryModel(BaseModelWithTimestamps):
   user = relationship("UserModel", back_populates="categories")
   
   entries: Mapped[List["EntryModel"]] = relationship(back_populates="category")
-  tables = relationship("TableModel", secondary = TableCategoryModel, back_populates = "category")
+  tables = relationship("TableModel", secondary = table_category, back_populates = "categories")

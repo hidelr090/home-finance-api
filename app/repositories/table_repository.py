@@ -8,6 +8,8 @@ class TableRepository:
     self.db = db
     
   def create(self, table: TableModel) -> TableModel:
+    self.db.flush() 
+    self.db.expunge_all() 
     self.db.add(table)
     self.db.commit()
     self.db.refresh(table)

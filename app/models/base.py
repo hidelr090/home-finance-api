@@ -25,11 +25,11 @@ class BaseModelWithTimestamps(Base):
     
     @declared_attr
     def created_by(cls):
-        return Column(String, nullable=False)
+        return Column(String, nullable=True)
 
     @declared_attr
     def updated_by(cls):
-        return Column(String, nullable=False)
+        return Column(String, nullable=True)
 
     @declared_attr
     def deleted_by(cls):
